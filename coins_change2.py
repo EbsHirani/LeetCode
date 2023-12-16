@@ -13,3 +13,16 @@ class Solution:
                 else:
                     dp[i][j] = dp[i-1][j]
         return dp[-1][-1]
+    
+
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        dp = [0]*(amount+1)
+        dp[0] = 1
+        for c in coins:
+            for amt in range(1, amount+1):
+                if amt-c>=0:
+                    dp[amt] += dp[amt-c]
+        
+        return dp[-1]
+        
